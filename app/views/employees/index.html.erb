@@ -44,10 +44,11 @@
 										<td><%= employee.email %></td>
 										<td><%= employee.phone %></td>
 										<td><%= employee.salary %></td>
-										<td><%= employee.joining_date %></td>
-										<td><%= employee.date_of_birth%></td>
+										<td><%= employee.joining_date&.strftime("%d-%m-%Y") %></td>
+										<td><%= employee.date_of_birth&.strftime("%d-%m-%Y") %></td>
 										<td><%= button_to 'Change role', change_role_path(id: employee.id), method: :post %></td>
-										<td><%= link_to edit_employee_path(employee.id) do %><i class='fa fa-pencil-square-o'></i><% end %>    <%= button_to  employee_path(employee), method: :delete do %><i class='fa fa-trash'></i></td><% end %>
+										<td><%= link_to edit_employee_path(employee.id) do %><i class='fa fa-pencil-square-o'></i><% end %>    
+											<%= link_to  employee_path(employee),data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?'} do %><i class='fa fa-trash'></i></td><% end %>
 									</tr>
 								<% end %>
 							</tbody>

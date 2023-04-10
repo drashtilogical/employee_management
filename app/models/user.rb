@@ -26,6 +26,4 @@ class User < ApplicationRecord
   def is_admin?
     has_role?(:admin)
   end
-
-  
 end

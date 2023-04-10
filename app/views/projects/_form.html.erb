@@ -1,17 +1,38 @@
-<%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="main">
+	<!-- MAIN CONTENT -->
+	<div class="main-content">
+		<div class="container-fluid">
+			<h3 class="page-title"></h3>
+			<div class="row">
+        <div class="col-md-6">
+				<!-- BASIC TABLE -->
+				  <div class="panel">
+					  <div class="panel-heading">
+						  <h3 class="panel-title">Create New Project</h3>
+					  </div>
+					  <div class="panel-body">
+            
+            <%= form_with(model: project) do |form| %>
+            
+              <div class="field">
+                <%= form.label :project_name %>
+                <%= form.text_field :project_name, autofocus: true, autocomplete: "project_name" %>
+              </div>
+              <% if @project.errors[:project_name].any? %>
+                <div class="error">
+                  <%= @project.errors[:project_name].join(", ") %>
+                </div>
+              <% end %>
 
-      <ul>
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+              <div>
+                <%= form.submit %>
+              </div>
+            <% end %>
+  <%= link_to "Back to projects", projects_path %>
+            
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

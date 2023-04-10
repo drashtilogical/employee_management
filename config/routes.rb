@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  root "home#index"
   resources :projects
   resources :daily_updates
-  resources :leaves
+  resources :leaves do
+    member do
+      patch 'update_status'
+    end
+  end
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "home#index"
-  # root "user_dashboard#index" 
   resources :employees
-  # post 'create', to: 
   get '/tables', to: 'home#tables'
   post 'change_role', to: 'employees#change_role'
   # get 'edit', to: 'employess#edit'

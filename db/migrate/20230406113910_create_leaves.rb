@@ -5,7 +5,7 @@ class CreateLeaves < ActiveRecord::Migration[7.0]
       t.string :description
       t.datetime :from_date
       t.datetime :to_date
-      t.integer :status
+      t.integer :status, default: 0
 
       t.references :user,foreign_key: true
       t.references :organization,foreign_key: true

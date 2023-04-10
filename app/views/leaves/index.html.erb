@@ -1,14 +1,65 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Leaves</h1>
-
-<div id="leaves">
-  <% @leaves.each do |leafe| %>
-    <%= render leafe %>
-    <p>
-      <%= link_to "Show this leave", leafe %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New leave", new_leafe_path %>
+<!-- MAIN -->
+<div class="main">
+	<!-- MAIN CONTENT -->
+	<% if flash[:alert] %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<div class="main-content">
+		<div class="container-fluid">
+			<h3 class="page-title"></h3>
+			<div class="row">
+				<!-- BASIC TABLE -->
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">Leaves list</h3>
+						<ul class="nav navbar-nav navbar-right">
+							<%= link_to new_leafe_path, class: "btn btn-primary" do %>
+								Add New Leave
+							<% end %>
+						</ul>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<% if current_user.is_admin? %>
+										<th>User Name</th>
+									<% end %>
+									<th>leave_type</th>
+									<th>description</th>
+									<th>from_date</th>
+									<th>to_date</th>	
+									<th>status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% @leaves.each do |leafe| %>
+								<tr>
+									<td><%= leafe.id %></td>
+									<% if current_user.is_admin? %>
+										<td><%= leafe.user&.name %></td>
+									<% end %>
+									<td><%= leafe.leave_type %></td>
+									<td><%= leafe.description %></td>
+									<td><%= leafe.from_date.strftime("%d-%m-%Y") %></td>
+									<td><%= leafe.to_date.strftime("%d-%m-%Y") %></td>
+									<td><%= leafe.status %></td>
+									<td><% if leafe.status? && current_user.is_admin? %>
+										<%= button_to "Approve", update_status_leafe_path(leafe), params: { commit: "Approve" }, method: :patch %>
+											<%= button_to "Reject", update_status_leafe_path(leafe), params: { commit: "Reject" }, method: :patch %>
+										</td>
+										<% elsif  leafe.status? %>
+										<%= link_to edit_leafe_path(leafe.id) do %><i class='fa fa-pencil-square-o'></i><% end %>
+											<%= link_to  leafe_path(leafe), data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?'} do %><i class='fa fa-trash'></i><% end %>
+									<% end %>
+								</tr>
+							<% end %>	
+						</tbody>
+					</table>
+				</div>
+			</div>
+				<!-- END BASIC TABLE -->
+				<%= paginate @leaves %>
+				

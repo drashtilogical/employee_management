@@ -1,14 +1,46 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Daily updates</h1>
-
-<div id="daily_updates">
-  <% @daily_updates.each do |daily_update| %>
-    <%= render daily_update %>
-    <p>
-      <%= link_to "Show this daily update", daily_update %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New daily update", new_daily_update_path %>
+<!-- MAIN -->
+<div class="main">
+	<!-- MAIN CONTENT -->
+	<% if flash[:alert] %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<div class="main-content">
+		<div class="container-fluid">
+			<h3 class="page-title"></h3>
+			<div class="row">
+				<!-- BASIC TABLE -->
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">Leaves list</h3>
+						<ul class="nav navbar-nav navbar-right">
+							<%= link_to new_daily_update_path, class: "btn btn-primary" do %>
+								Add New Leave
+							<% end %>
+						</ul>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<% if current_user.is_admin? %>
+										<th>User Name</th>
+									<% end %>
+									<th>leave_type</th>
+									<th>description</th>
+									<th>from_date</th>
+									<th>to_date</th>	
+									<th>status</th>
+									<% if current_user.is_admin? %>
+										<th>Action</th>
+									<% end %>
+								</tr>
+							</thead>
+							<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+				<!-- END BASIC TABLE -->
+				

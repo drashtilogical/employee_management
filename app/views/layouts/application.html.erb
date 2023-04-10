@@ -11,6 +11,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %> 
+    <% if current_user.is_admin? %>
+      <%= render "admin/admin_navbar" %>
+      <%= render "admin/admin_leftbar" %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+    <% else %>
+      <%= render "user_dashboard/user_navbar" %>
+      <%= render "user_dashboard/user_leftbar" %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+    <% end %>
+  <% else %>
+    <%= button_to "Sign in", new_user_session_path %> 
+  <% end %>
+  <%= yield %>
   </body>
 </html>
