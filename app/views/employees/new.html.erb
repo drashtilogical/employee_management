@@ -1,0 +1,6 @@
+<%= form_for @employee, url: employees_url, method: :post do |f| %>
+  <%= render 'form' , f: f%></br >
+  <div class="col-md-12 text-end">
+    <%= f.button "Create" %>
+  </div>
+<% end %>

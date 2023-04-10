@@ -1,0 +1,2 @@
+module DailyUpdatesHelper
+end

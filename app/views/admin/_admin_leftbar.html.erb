@@ -1,0 +1,30 @@
+<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><i class="fa fa-home"><%= link_to 'Dashboard',root_path %></i> </li>
+						<li><i class='fa fa-users'><%= link_to 'Employees',employees_path %></i> </li>
+						<li><a href="#" class=""><%= link_to 'Leaves',leaves_path %></a></li>
+						<li><a href="#" class=""><%= link_to 'Daily_Upadtes',daily_updates_path %></a></li>
+						<li><a href="#" class=""><%= link_to 'Projects',projects_path %></a></li>
+						<li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+						<li>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="#" class="">Profile</a></li>
+									<li><a href="#" class="">Login</a></li>
+									<li><a href="#" class="">Lockscreen</a></li>
+								</ul>
+							</div>
+						</li>
+						<li><%=  link_to "Tables", "#" %><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
+						<li><a href="#" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
+						<li><a href="#" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+    

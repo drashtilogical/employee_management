@@ -1,0 +1,6 @@
+<%= form_for @employee, url: { controller: 'employees', action: 'update'} do |f| %>
+  <%= render 'form',f: f%>
+  <div class="col-md-12 text-end"><br />
+    <%= f.button "update" %>
+  </div>
+<% end %>

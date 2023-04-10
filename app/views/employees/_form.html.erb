@@ -1,0 +1,104 @@
+<%= render "home/navbar" %>
+<%= render "home/leftsidebar" %>
+
+<div class="main">
+	<!-- MAIN CONTENT -->
+	<div class="main-content">
+		<div class="container-fluid">
+			<h3 class="page-title"></h3>
+			<div class="row">
+        <div class="col-md-6">
+				<!-- BASIC TABLE -->
+				  <div class="panel">
+					  <div class="panel-heading">
+						  <h3 class="panel-title">Create New Employee</h3>
+					  </div>
+					  <div class="panel-body">
+            
+              <div class="field" > 
+                <%= f.label :name %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </div>
+              <div style="color: red">
+              <% if @employee.errors[:name].any? %>
+                <div class="error">
+                  <%= @employee.errors[:name].join(", ") %>
+                </div>
+              <% end %>
+              </div>
+              
+              <div class="field" >
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+              <% if @employee.errors[:email].any? %>
+                <div class="error">
+                  <%= @employee.errors[:email].join(", ") %>
+                </div>
+              <% end %>
+              
+
+              <div class="field">
+                <%= f.label :phone %>
+                <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+              </div>
+              <% if @employee.errors[:phone].any? %>
+                <div class="error">
+                  <%= @employee.errors[:phone].join(", ") %>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= f.label :salary %>
+                <%= f.text_field :salary, autofocus: true, autocomplete: "salary" %>
+              </div>
+              <% if @employee.errors[:salary].any? %>
+                <div class="error">
+                  <%= @employee.errors[:salary].join(", ") %>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= f.label :Joining_date %>
+                <%= f.date_field :joining_date, autofocus: true, autocomplete: "joining_date" %>
+              </div>
+              <% if @employee.errors[:joining_date].any? %>
+                <div class="error">
+                  <%= @employee.errors[:joining_date].join(", ") %>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= f.label :date_of_birth %>
+                <%= f.date_field :date_of_birth, autofocus: true, autocomplete: "date_of_birth" %>
+              </div>
+              <% if @employee.errors[:date_of_birth].any? %>
+                <div class="error">
+                  <%= @employee.errors[:date_of_birth].join(", ") %>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "new-password" %>
+              </div>
+              <% if @employee.errors[:password].any? %>
+                <div class="error">
+                  <%= @employee.errors[:password].join(", ") %>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= f.hidden_field :organization_id, value: current_user.organization_id %>
+              </div>
+
+              
+            
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+  

@@ -1,0 +1,52 @@
+<%= form_with(model: leafe) do |form| %>
+  <% if leafe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(leafe.errors.count, "error") %> prohibited this leafe from being saved:</h2>
+
+      <ul>
+        <% leafe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :leave_type %>
+    <%= form.select :leave_type, options_for_select(Leave.leave_types.map {|key, value| [key.titleize, Leave.leave_types.key(value)]}, @leafe.leave_type) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, autofocus: true, autocomplete: "description" %>
+  </div>
+  <% if @leafe.errors[:description].any? %>
+    <div class="error">
+      <%= @leafe.errors[:description].join(", ") %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :from_date %>
+    <%= form.date_field :from_date, autofocus: true, autocomplete: "from_date" %>
+  </div>
+  <% if @leafe.errors[:from_date].any? %>
+    <div class="error">
+      <%= @leafe.errors[:from_date].join(", ") %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :to_date %>
+    <%= form.date_field :to_date, autofocus: true, autocomplete: "to_date" %>
+  </div>
+  <% if @leafe.errors[:to_date].any? %>
+    <div class="error">
+      <%= @leafe.errors[:to_date].join(", ") %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

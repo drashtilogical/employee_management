@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @leafe %>
+
+<p>leave_type=<%= @leafe.leave_type %></p>
+<p>description=<%= @leafe.description %></p>
+<p>from_date=<%= @leafe.from_date %></p>
+<p>to_date=<%= @leafe.to_date %></p>
+<p>status =<%= @leafe.status %></p>
+<div>
+  <%= link_to "Edit this leave", edit_leafe_path(@leafe) %> |
+  <%= link_to "Back to leaves", leaves_path %>
+
+  <%= button_to "Destroy this leave", @leafe, method: :delete %>
+</div>

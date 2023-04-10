@@ -1,0 +1,57 @@
+<%= form_with(model: daily_update) do |form| %>
+  <% if daily_update.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(daily_update.errors.count, "error") %> prohibited this daily_update from being saved:</h2>
+
+      <ul>
+        <% daily_update.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, autofocus: true, autocomplete: "description" %>
+  </div>
+  <% if @daily_update.errors[:description].any? %>
+    <div class="error">
+      <%= @daily_update.errors[:description].join(", ") %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project_name %>
+    <%= form.text_field :project_name, autofocus: true, autocomplete: "project_name" %>
+  </div>
+  <% if @daily_update.errors[:project_name].any? %>
+    <div class="error">
+      <%= @daily_update.errors[:project_name].join(", ") %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.date_field :start_time, autofocus: true, autocomplete: "start_time" %>
+  </div>
+  <% if @daily_update.errors[:start_time].any? %>
+    <div class="error">
+      <%= @daily_update.errors[:start_time].join(", ") %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.date_field :end_time, autofocus: true, autocomplete: "end_time" %>
+  </div>
+  <% if @daily_update.errors[:end_time].any? %>
+    <div class="error">
+      <%= @daily_update.errors[:end_time].join(", ") %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

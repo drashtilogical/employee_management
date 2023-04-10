@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @daily_update %>
+
+<p>description=<%= @daily_update.description %></p>
+<p>start_time=<%= @daily_update.start_time %></p>
+<p>to_date=<%= @daily_update.end_time %></p>
+<p>project_name =<%= @daily_update.project_name %></p>
+
+<div>
+  <%= link_to "Edit this daily update", edit_daily_update_path(@daily_update) %> |
+  <%= link_to "Back to daily updates", daily_updates_path %>
+
+  <%= button_to "Destroy this daily update", @daily_update, method: :delete %>
+</div>
